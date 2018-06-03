@@ -3,24 +3,27 @@
   "version": "1.0.0",
   "description": "Newark Rugby Club tour registration site",
   "main": "index.js",
-  "repository": "",
+  "repository": "https://github.com/shainnif/newark-rugby-club",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@angular/common": "^6.0.3",
-    "@angular/compiler": "^6.0.3",
-    "@angular/core": "^6.0.3",
-    "@angular/platform-browser": "^6.0.3",
-    "@angular/platform-browser-dynamic": "^6.0.3",
-    "angularfire2": "^5.0.0-rc.10",
-    "bootstrap": "^4.1.1",
-    "firebase": "^5.0.4",
     "jquery": "^3.3.1",
-    "popper.js": "^1.14.3",
-    "rxjs": "^6.2.0",
-    "zone.js": "^0.8.26"
+    "popper.js": "^1.14.3"
+  },
+  "devDependencies": {
+    "browser-sync": "^2.24.4",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^5.0.0",
+    "gulp-bootstrap-configurator": "^0.4.1",
+    "gulp-concat": "^2.6.1",
+    "gulp-cssmin": "^0.2.0",
+    "gulp-imagemin": "^4.1.0",
+    "gulp-minify": "^2.1.0",
+    "gulp-rename": "^1.2.3",
+    "gulp-sass": "^4.0.1",
+    "gulp-uglify": "^3.0.0"
   }
 }

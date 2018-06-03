@@ -63,3 +63,5 @@ typings/
 .next
 
 
+/public/node_modules/
+/functions/node_modules/
