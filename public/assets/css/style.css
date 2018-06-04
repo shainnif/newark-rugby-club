@@ -114,6 +114,49 @@ hr {
 
 
 }
+.grid_icon{
+    font-size:5em;
+    color:#b28d42;
+}
+
+.grid_title {
+    font-size: 19px;
+    line-height: 25px;
+    font-weight: 700;
+    font-style: normal;
+    text-transform: uppercase;
+}
+
+.grid_desc {
+    font-size: 18px;
+    line-height: 0;
+    font-weight: 100;
+    font-style: normal;
+    padding-top: 10px;
+}
+
+.grid_card {
+    float: left;
+    text-align: center;
+    padding-left: 20px;
+    padding-right: 20px;
+    position: relative;
+}
+
+.subtitle {
+    font-size: 18px;
+    line-height: 32px;
+    font-weight: 100;
+    color: #535353;
+}
+
+.location {
+    float: left;
+    text-align: center;
+    padding-left: 20px;
+    padding-right: 20px;
+    position: relative;
+}
 
 
 /*************************
@@ -316,9 +359,9 @@ hr {
 *******feature******
 **************************/
 #home {
-    padding-top:90px;
+    padding-top:60px;
     background:#fff;
-    padding-bottom:50px;
+    padding-bottom:60px;
 }
 
 .hi-icon-effect {
@@ -373,37 +416,10 @@ hr {
 /*************************
 *******services******
 **************************/
-#gallery {
+#accommodation {
     padding-top:70px;
     padding-bottom:70px;
     background:#f4f4f4;
-}
-#gallery img {
-    border-radius:8px;
-}
-
-.gallery {
-    margin-top:60px;
-    margin-bottom:30px;
-}
-
-#gallery .text-center {
-    padding-top:20px;
-    margin-bottom:50px;
-    padding-bottom:20px;
-}
-
-figure.effect-chico img {
-    -webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
-    transition: opacity 0.35s, transform 0.35s;
-    -webkit-transform: scale(1.12);
-    transform: scale(1.12);
-}
-
-figure.effect-chico:hover img {
-    opacity: 0.5;
-    -webkit-transform: scale(1);
-    transform: scale(1);
 }
 
 /*************************
@@ -462,7 +478,7 @@ figure.effect-chico:hover img {
 /*************************
 *******pricing******
 **************************/
-#pricing {
+#registration {
     padding-top:90px;
     background:#fff;
     padding-bottom:40px;
@@ -703,8 +719,11 @@ figure.effect-chico:hover img {
 *******footer******
 **************************/
 footer {
-    background:#f4f4f4;
-    padding-bottom:20px;
+    border-radius: 0;
+    margin-bottom: 0;
+    background: #4267b2;
+    padding: 20px;
+    color: #fff;
 }
 
 #contact {
@@ -864,3 +883,5 @@ ul.social-network li a {
 .social-network li:hover .fa-pinterest-square {
     color: #EA4B49;
 }
+
+#success_message{ display: none;}

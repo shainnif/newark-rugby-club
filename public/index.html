@@ -28,13 +28,36 @@
 </head>
 <body>
 
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+// // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
+// // The Firebase SDK is initialized and available here!
+//
+    firebase.auth().onAuthStateChanged(user => {
+    });
+// firebase.database().ref('/path/to/ref').on('value', snapshot => { });
+// firebase.messaging().requestPermission().then(() => { });
+// firebase.storage().ref('/path/to/ref').getDownloadURL().then(() => { });
+//
+// // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
+
+    try {
+      let app = firebase.app();
+      let features = ['auth', 'database', 'messaging', 'storage'].filter(feature => typeof app[feature] === 'function');
+    } catch (e) {
+      console.error(e);
+      document.getElementById('load').innerHTML = 'Error loading the Firebase SDK, check the console.';
+    }
+  });
+</script>
+
+
 <header id="header">
     <div class="navbar sticky-top d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 border-bottom box-shadow">
         <div class="header-nav-company">Newark Rugby Tour 2019</div>
         <nav class="my-2 my-md-0 mr-md-3">
             <a class="p-2 text-light" href="#home">Home</a>
             <a class="p-2 text-light" href="#accommodation">Accommodation</a>
-            <a class="p-2 text-light" href="#festival">Festival</a>
             <a class="p-2 text-light" href="#registration">Registration</a>
         </nav>
     </div>
@@ -47,69 +70,58 @@
                 <div class="display-4 font-weight-normal">Newark RUFC</div>
                 <div class="alt-sub-text font-weight-normal">Mini Tour 2019</div>
 
-                <div>
-                    Every Year Newark mini's go away to make great friends and memories and hopefully play some rugby,
-                    this years tour will build on the successes of previous years.
+                <div class="subtitle">
+                    <p>Every Year Newark mini's go away to make great friends and memories and hopefully play some
+                        rugby,
+                        this years tour will build on the successes of previous years.</p>
+                    <p>We will be staying at the PGL centre at Caythope court, which has amazing facilities and a great
+                        staff.</p>
+                    <p>For the rugby will be attending the Stamford Festival.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vestibulum a felis ut
+                        fringilla. Donec sit amet facilisis dui. Phasellus egestas, nulla eu elementum tristique, velit
+                        sem ultricies ipsum, vitae cursus lectus leo ut ipsum. Fusce tincidunt dictum nulla, ac commodo
+                        nisl lobortis vel.</p>
 
-                    We will be staying at the PGL centre at Caythope court, which has amazing facilities and a great staff.
-
-                    For the rugby will be attending the Stamford Festival.
                 </div>
             </div>
             <div class="col">
                 <div class="row">
-                    <div class="col">
-                        <div style="font-size:5em; color:#b28d42">
-                            <i class="far fa-calendar-alt"></i>
-                        </div>
-                        <div>
-                            Dates
-                        </div>
-                        <div>
-                            19th - 22nd April
-                        </div>
+                    <div class="col grid_card">
+                        <div class="grid_icon"><i class="far fa-calendar-alt"></i></div>
+                        <div class="grid_title">Dates</div>
+                        <div class="grid_desc">19th - 22nd April</div>
                     </div>
 
-                    <div class="col">
-                        <div style="font-size:5em; color:#b28d42">
-                            <i class="fas fa-football-ball"></i>
-                        </div>
-                        <div>Playing Date</div>
-                        <div>22nd April</div>
+                    <div class="col grid_card">
+                        <div class="grid_icon"><i class="fas fa-football-ball"></i></div>
+                        <div class="grid_title">Playing Date</div>
+                        <div class="grid_desc">22nd April</div>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col">
-                        <div style="font-size:5em; color:#b28d42">
-                            <i class="fas fa-map-marker"></i>
-                        </div>
-                        <div>Location</div>
-                        <div>22nd April</div>
+                    <div class="col grid_card">
+                        <div class="grid_icon"><i class="fas fa-map-marker"></i></div>
+                        <div class="grid_title">Location</div>
+                        <div class="grid_desc">22nd April</div>
                     </div>
-                    <div class="col">
-                        <div style="font-size:5em; color:#b28d42">
-                            <i class="fas fa-bed"></i>
-                        </div>
-                        <div>Accommodation</div>
-                        <div>Caythorpe Court PGL</div>
+                    <div class="col grid_card">
+                        <div class="grid_icon"><i class="fas fa-bed"></i></div>
+                        <div class="grid_title">Accommodation</div>
+                        <div class="grid_desc">Caythorpe Court PGL</div>
                     </div>
 
                 </div>
                 <div class="row">
-                    <div class="col">
-                        <div style="font-size:5em; color:#b28d42">
-                            <i class="fas fa-user"></i>
-                        </div>
-                        <div>Ages</div>
-                        <div>U8 - U11</div>
+                    <div class="col grid_card">
+                        <div class="grid_icon"><i class="fas fa-user"></i></div>
+                        <div class="grid_title">Ages</div>
+                        <div class="grid_desc">U8 - U11</div>
                     </div>
 
-                    <div class="col">
-                        <div style="font-size:5em; color:#b28d42">
-                            <i class="fas fa-pound-sign"></i>
-                        </div>
-                        <div>Prices</div>
-                        <div>£150pp</div>
+                    <div class="col grid_card">
+                        <div class="grid_icon"><i class="fas fa-pound-sign"></i></div>
+                        <div class="grid_title">Prices</div>
+                        <div class="grid_desc">£150pp</div>
                     </div>
                 </div>
             </div>
@@ -122,13 +134,26 @@
             <div class="col">
 
                 <h2>Accommodation</h2>
-                One of PGL larger centres, Caythorpe has up to 23 different thrilling activities to experience, making this a perfect multi activity choice for your family. Thanks to our purpose-built lakes we have an ideal mix of watersports and land-based activities. There is also an amazing high ropes activity area at the heart of the centre, archery ranges, a new tunnel trail activity, an outdoor sports pitch and some great weather-proof spaces including a sports hall and an indoor firing range.
+                <div class="subtitle">
+                    <p>
+                        One of PGL larger centres, Caythorpe has up to 23 different thrilling activities to experience,
+                        making this a perfect multi activity choice for your family. Thanks to our purpose-built lakes
+                        we have an ideal mix of watersports and land-based activities. There is also an amazing high
+                        ropes activity area at the heart of the centre, archery ranges, a new tunnel trail activity, an
+                        outdoor sports pitch and some great weather-proof spaces including a sports hall and an indoor
+                        firing range.
+                    </p>
+                    <p>Highlights:</p>
 
-                Highlights:
-
-                Excellent modern facilities in a peaceful, historic setting
-                Fantastic range of on-site activities including two private lakes
-                Easy access from the A1
+                    <p>Excellent modern facilities in a peaceful, historic setting
+                        Fantastic range of on-site activities including two private lakes
+                        Easy access from the A1
+                    </p>
+                </div>
+                <div class="location">
+                    <h2>Caythorpe Court</h2>
+                    <a href="https://placeholder.com"><img src="http://via.placeholder.com/500x500"></a>
+                </div>
             </div>
 
 
@@ -140,9 +165,183 @@
     <div class="container-fluid">
         <h2>Registration</h2>
         <div class="row">
+            <div class="col">
+                <form class="needs-validation" novalidate="">
+                    <div class="mb-3">
+                        <label for="email">Email</label>
+                        <input type="email" class="form-control" id="email" placeholder="you@example.com">
+                        <div class="invalid-feedback">
+                            Please enter a valid email address for us to contact you.
+                        </div>
+                    </div>
+                    <hr class="mb-4">
+                    <h4 class="mb-3">Sponsor</h4>
+
+                    <div class="d-block my-3">
+                        <div class="custom-control custom-radio">
+                            <input id="sponsor_yes" name="sponsorship" type="radio" class="custom-control-input" checked=""
+                                   required="">
+                            <label class="custom-control-label" for="sponsor_yes">Yes</label>
+                        </div>
+                        <div class="custom-control custom-radio">
+                            <input id="sponsor_no" name="sponsorship" type="radio" class="custom-control-input"
+                                   required="">
+                            <label class="custom-control-label" for="sponsor_no">No</label>
+                        </div>
+                        <div class="custom-control custom-radio">
+                            <input id="sponsor_maybe" name="sponsorship" type="radio" class="custom-control-input"
+                                   required="">
+                            <label class="custom-control-label" for="sponsor_maybe">Maybe</label>
+                        </div>
+                    </div>
+
+                    <hr class="mb-4">
+                    <h4 class="mb-3">Parent Details</h4>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="firstName">First name</label>
+                            <input type="text" class="form-control" id="firstName" placeholder="" value="" required="">
+                            <div class="invalid-feedback">
+                                Valid first name is required.
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="lastName">Last name</label>
+                            <input type="text" class="form-control" id="lastName" placeholder="" value="" required="">
+                            <div class="invalid-feedback">
+                                Valid last name is required.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="address">Address</label>
+                        <input type="text" class="form-control" id="address" placeholder="1234 Main St" required="">
+                        <div class="invalid-feedback">
+                            Please enter your shipping address.
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="address2">Address 2 <span class="text-muted">(Optional)</span></label>
+                        <input type="text" class="form-control" id="address2" placeholder="Apartment or suite">
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-5 mb-3">
+                            <label for="country">Country</label>
+                            <select class="custom-select d-block w-100" id="country" required="">
+                                <option value="">Choose...</option>
+                                <option>United Kingdom</option>
+                            </select>
+                            <div class="invalid-feedback">
+                                Please select a valid country.
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label for="state">County</label>
+                            <select class="custom-select d-block w-100" id="state" required="">
+                                <option value="">Choose...</option>
+                                <option>Nottinghamshire</option>
+                                <option>Lincolnshire</option>
+                                <option>Leicestershire</option>
+                            </select>
+                            <div class="invalid-feedback">
+                                Please provide a valid county.
+                            </div>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <label for="postcode">Post Code</label>
+                            <input type="text" class="form-control" id="postcode" placeholder="" required="">
+                            <div class="invalid-feedback">
+                                Post code required.
+                            </div>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <label for="phoneNumer">Phone Number</label>
+                            <input type="text" class="form-control" id="phoneNumer" placeholder="" required="">
+                            <div class="invalid-feedback">
+                                Phone number required.
+                            </div>
+                        </div>
+
+                    </div>
+                    <hr class="mb-4">
+                    <h4 class="mb-3">Child Details</h4>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="childFirstName">First name</label>
+                            <input type="text" class="form-control" id="childFirstName" placeholder="" value="" required="">
+                            <div class="invalid-feedback">
+                                Valid first name is required.
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="childLastName">Last name</label>
+                            <input type="text" class="form-control" id="childLastName" placeholder="" value="" required="">
+                            <div class="invalid-feedback">
+                                Valid last name is required.
+                            </div>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <label for="dateOfBirth">Date of Birth</label>
+                            <input type="datetime" class="form-control" id="dateOfBirth" placeholder="dd/mm/yyyy" required="">
+                            <div class="invalid-feedback">
+                                Date of Birth Required.
+                            </div>
+                        </div>
+                        <div class="col-md-5 mb-3">
+                            <label for="country">Age Group 2018/2019 Season</label>
+                            <select class="custom-select d-block w-100" id="country" required="">
+                                <option value="">Choose...</option>
+                                <option>U8</option>
+                                <option>U9</option>
+                                <option>U10</option>
+                                <option>U11</option>
+                                <option>U12</option>
+                            </select>
+                            <div class="invalid-feedback">
+                                Please select a valid age group.
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                    <hr class="mb-4">
+                    <h4 class="mb-3">Payment</h4>
+
+                    <div class="d-block my-3">
+                        <div class="custom-control custom-radio">
+                            <input id="monthly" name="paymentMethod" type="radio" class="custom-control-input" checked=""
+                                   required="">
+                            <label class="custom-control-label" for="monthly">Monthly Payments</label>
+                        </div>
+                        <div class="custom-control custom-radio">
+                            <input id="payInFull" name="paymentMethod" type="radio" class="custom-control-input"
+                                   required="">
+                            <label class="custom-control-label" for="payInFull">Pay In Full Now</label>
+                        </div>
+                        <div class="custom-control custom-radio">
+                            <input id="payInFullLater" name="paymentMethod" type="radio" class="custom-control-input"
+                                   required="">
+                            <label class="custom-control-label" for="payInFullLater">Pay Directly using check or Bank Transfer</label>
+                        </div>
+                    </div>
+
+
+                    <hr class="mb-4">
+                    <button class="btn btn-primary btn-lg btn-block" type="submit">Continue to checkout</button>
+                </form>
+            </div>
         </div>
     </div>
 </div>
+
+<footer>
+    Link to Social media sites
+    link to pitchero
+    contact details for the club
+</footer>
 
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
@@ -158,32 +357,4 @@
 </html>
 
 
-<!--<script>-->
-<!--document.addEventListener('DOMContentLoaded', function () {-->
-<!--// // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥-->
-<!--// // The Firebase SDK is initialized and available here!-->
-<!--//-->
-<!--firebase.auth().onAuthStateChanged(user => {-->
-<!--});-->
-<!--// firebase.database().ref('/path/to/ref').on('value', snapshot => { });-->
-<!--// firebase.messaging().requestPermission().then(() => { });-->
-<!--// firebase.storage().ref('/path/to/ref').getDownloadURL().then(() => { });-->
-<!--//-->
-<!--// // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥-->
 
-<!--try {-->
-<!--let app = firebase.app();-->
-<!--let features = ['auth', 'database', 'messaging', 'storage'].filter(feature => typeof app[feature] === 'function');-->
-<!--} catch (e) {-->
-<!--console.error(e);-->
-<!--document.getElementById('load').innerHTML = 'Error loading the Firebase SDK, check the console.';-->
-<!--}-->
-<!--});-->
-<!--</script>-->
-
-<!--&lt;!&ndash; jQuery (necessary for Bootstrap's JavaScript plugins) &ndash;&gt;-->
-<!--<script src="assets/js/jquery.js"></script>-->
-<!--&lt;!&ndash; Include all compiled plugins (below), or include individual files as needed &ndash;&gt;-->
-<!--<script src="assets/js/bootstrap.min.js"></script>-->
-<!--</body>-->
-<!--</html>-->
