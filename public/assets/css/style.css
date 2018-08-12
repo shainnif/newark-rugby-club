@@ -129,7 +129,6 @@ hr {
 
 .grid_desc {
     font-size: 18px;
-    line-height: 0;
     font-weight: 100;
     font-style: normal;
     padding-top: 10px;
@@ -723,8 +722,16 @@ footer {
     margin-bottom: 0;
     background: #4267b2;
     padding: 20px;
-    color: #fff;
+    color: white;
 }
+.footer {
+    border-radius: 0;
+    margin-bottom: 0;
+    background: #4267b2;
+    padding: 20px;
+    color: white;
+}
+
 
 #contact {
     background: #fafafa;
@@ -763,6 +770,10 @@ footer {
 
 #sendmessage.show, #errormessage.show, .show {
     display:block;
+}
+
+.nav-footer-element {
+    color: white;
 }
 
 #contact .text-center {

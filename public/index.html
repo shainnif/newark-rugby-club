@@ -16,14 +16,179 @@
             integrity="sha384-xymdQtn1n3lH2wcu0qhcdaOpQwyoarkgLVxC/wZ5q7h9gHtxICrpcaSUfygqZGOe"
             crossorigin="anonymous"></script>
 
-    <script defer src="/__/firebase/5.0.4/firebase-app.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/5.1.0/firebase-app.js"></script>
     <!-- include only the Firebase features as you need -->
-    <script defer src="/__/firebase/5.0.4/firebase-auth.js"></script>
-    <script defer src="/__/firebase/5.0.4/firebase-database.js"></script>
-    <script defer src="/__/firebase/5.0.4/firebase-messaging.js"></script>
-    <script defer src="/__/firebase/5.0.4/firebase-storage.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/5.1.0/firebase-auth.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/5.1.0/firebase-database.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/5.1.0/firebase-messaging.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/5.1.0/firebase-storage.js"></script>
     <!-- initialize the SDK after all desired features are loaded -->
     <script defer src="/__/firebase/init.js"></script>
+
+    <link rel='stylesheet' href='https://unpkg.com/formiojs@latest/dist/formio.full.min.css'>
+    <script src='https://unpkg.com/formiojs@latest/dist/formio.full.min.js'></script>
+    <script type='text/javascript'>
+
+      window.onload = function () {
+        Formio.createForm(document.getElementById('formio'), {
+          components: [
+            {
+              type: 'textfield',
+              key: 'firstName',
+              label: 'Parents First Name',
+              placeholder: 'Enter your first name.',
+              input: true
+            },
+            {
+              type: 'textfield',
+              key: 'lastName',
+              label: 'Parents Last Name',
+              placeholder: 'Enter your last name',
+              input: true
+            },
+
+            {
+              type: 'email',
+              key: 'emailAddress',
+              label: 'Parents Email',
+              placeholder: 'Enter your email address',
+              input: true
+            },
+            {
+              type: 'address',
+              key: 'homeAddress',
+              label: 'Address',
+              placeholder: 'Enter your home address',
+              map: {
+                key: 'AIzaSyDbWNlWheD79cKHlIgDEs9CcN_ZXiUM0Xk'
+              },
+              input: true
+            },
+            {
+              type: 'radio',
+              key: 'coach',
+              label: 'Are you a coach and wish go?',
+              values: [{label:'Yes',value:'Y'},{label:'No',value:'N'},{label:'Potentially',value:'?'}],
+              input: true
+            },
+
+            {
+              type: 'radio',
+              key: 'sponsorship',
+              label: 'Are you able to sponsor the event?',
+              values: [{label:'Yes',value:'Y'},{label:'No',value:'N'},{label:'Potentially',value:'?'}],
+              input: true
+            },
+            {
+              label: 'Children',
+              key: 'children',
+              type: 'datagrid',
+              input: true,
+              validate: {
+                minLength: 1,
+                maxLength: 4
+              },
+              components: [
+                {
+                  label: 'First Name',
+                  key: 'firstName',
+                  type: 'textfield',
+                  input: true
+                },
+                {
+                  label: 'Last Name',
+                  key: 'lastName',
+                  type: 'textfield',
+                  input: true
+                },
+                {
+                  label: 'Gender',
+                  key: 'gender',
+                  type: 'select',
+                  input: true,
+                  data: {
+                    values: [
+                      {
+                        value: 'M',
+                        label: 'Boy'
+                      },
+                      {
+                        value: 'F',
+                        label: 'Girl'
+                      }
+                    ]
+                  },
+                  dataSrc: 'values',
+                  template: '<span>{{ item.label }}</span>'
+                },
+                {
+                  label: 'Birthdate',
+                  key: 'birthdate',
+                  type: 'datetime',
+                  input: true,
+                  placeholder: '',
+                  format: 'yyyy-MM-dd',
+                  enableDate: true,
+                  enableTime:false,
+                  defaultDate: '',
+                  datepickerMode: 'day',
+                  datePicker: {
+                    showWeeks: true,
+                    startingDay: 0,
+                    initDate: '',
+                    minMode: 'day',
+                    maxMode: 'year',
+                    yearRows: 4,
+                    yearColumns: 5,
+                    datepickerMode: 'day',
+                    minDate: "2006-01-01",
+                    maxDate: "2014-12-31"
+                  }
+                },
+                {
+                  label: 'Age Group 2018/2019 Season',
+                  key: 'ageGroup',
+                  type: 'select',
+                  input: true,
+                  data: {
+                    values: [
+                      {
+                        value: 'U8',
+                        label: 'U8'
+                      },
+                      {
+                        value: 'U9',
+                        label: 'U9'
+                      },
+                      {
+                        value: 'U10',
+                        label: 'U10'
+                      },
+                      {
+                        value: 'U11',
+                        label: 'U11'
+                      },
+                      {
+                        value: 'U12',
+                        label: 'U12'
+                      },
+                    ]
+                  }
+                }
+              ]
+            },
+
+            {
+              type: 'button',
+              action: 'submit',
+              label: 'Continue to Checkout',
+              theme: 'primary'
+            }
+          ]
+        });
+      }
+    </script>
+
 
 </head>
 <body>
@@ -77,10 +242,8 @@
                     <p>We will be staying at the PGL centre at Caythope court, which has amazing facilities and a great
                         staff.</p>
                     <p>For the rugby will be attending the Stamford Festival.</p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vestibulum a felis ut
-                        fringilla. Donec sit amet facilisis dui. Phasellus egestas, nulla eu elementum tristique, velit
-                        sem ultricies ipsum, vitae cursus lectus leo ut ipsum. Fusce tincidunt dictum nulla, ac commodo
-                        nisl lobortis vel.</p>
+                    <p>More Details to follow <a href="https://www.facebook.com/events/405257123267746/">Facebook
+                        Page</a></p>
 
                 </div>
             </div>
@@ -89,20 +252,20 @@
                     <div class="col grid_card">
                         <div class="grid_icon"><i class="far fa-calendar-alt"></i></div>
                         <div class="grid_title">Dates</div>
-                        <div class="grid_desc">19th - 22nd April</div>
+                        <div class="grid_desc">12th - 14nd April</div>
                     </div>
 
                     <div class="col grid_card">
                         <div class="grid_icon"><i class="fas fa-football-ball"></i></div>
                         <div class="grid_title">Playing Date</div>
-                        <div class="grid_desc">22nd April</div>
+                        <div class="grid_desc">14nd April</div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col grid_card">
                         <div class="grid_icon"><i class="fas fa-map-marker"></i></div>
                         <div class="grid_title">Location</div>
-                        <div class="grid_desc">22nd April</div>
+                        <div class="grid_desc">14nd April</div>
                     </div>
                     <div class="col grid_card">
                         <div class="grid_icon"><i class="fas fa-bed"></i></div>
@@ -121,7 +284,7 @@
                     <div class="col grid_card">
                         <div class="grid_icon"><i class="fas fa-pound-sign"></i></div>
                         <div class="grid_title">Prices</div>
-                        <div class="grid_desc">£150pp</div>
+                        <div class="grid_desc">£165pp</div>
                     </div>
                 </div>
             </div>
@@ -152,7 +315,7 @@
                 </div>
                 <div class="location">
                     <h2>Caythorpe Court</h2>
-                    <a href="https://placeholder.com"><img src="http://via.placeholder.com/500x500"></a>
+                    <img src="assets/img/Caythope_house_image.jpg" class="img-fluid" alt="Caythope House">
                 </div>
             </div>
 
@@ -179,7 +342,8 @@
 
                     <div class="d-block my-3">
                         <div class="custom-control custom-radio">
-                            <input id="sponsor_yes" name="sponsorship" type="radio" class="custom-control-input" checked=""
+                            <input id="sponsor_yes" name="sponsorship" type="radio" class="custom-control-input"
+                                   checked=""
                                    required="">
                             <label class="custom-control-label" for="sponsor_yes">Yes</label>
                         </div>
@@ -270,28 +434,31 @@
                     <div class="row">
                         <div class="col-md-6 mb-3">
                             <label for="childFirstName">First name</label>
-                            <input type="text" class="form-control" id="childFirstName" placeholder="" value="" required="">
+                            <input type="text" class="form-control" id="childFirstName" placeholder="" value=""
+                                   required="">
                             <div class="invalid-feedback">
                                 Valid first name is required.
                             </div>
                         </div>
                         <div class="col-md-6 mb-3">
                             <label for="childLastName">Last name</label>
-                            <input type="text" class="form-control" id="childLastName" placeholder="" value="" required="">
+                            <input type="text" class="form-control" id="childLastName" placeholder="" value=""
+                                   required="">
                             <div class="invalid-feedback">
                                 Valid last name is required.
                             </div>
                         </div>
                         <div class="col-md-3 mb-3">
                             <label for="dateOfBirth">Date of Birth</label>
-                            <input type="datetime" class="form-control" id="dateOfBirth" placeholder="dd/mm/yyyy" required="">
+                            <input type="date" class="form-control" id="dateOfBirth" placeholder="dd/mm/yyyy"
+                                   required="">
                             <div class="invalid-feedback">
                                 Date of Birth Required.
                             </div>
                         </div>
                         <div class="col-md-5 mb-3">
-                            <label for="country">Age Group 2018/2019 Season</label>
-                            <select class="custom-select d-block w-100" id="country" required="">
+                            <label for="ageGroup">Age Group 2018/2019 Season</label>
+                            <select class="custom-select d-block w-100" id="ageGroup" required="">
                                 <option value="">Choose...</option>
                                 <option>U8</option>
                                 <option>U9</option>
@@ -312,7 +479,8 @@
 
                     <div class="d-block my-3">
                         <div class="custom-control custom-radio">
-                            <input id="monthly" name="paymentMethod" type="radio" class="custom-control-input" checked=""
+                            <input id="monthly" name="paymentMethod" type="radio" class="custom-control-input"
+                                   checked=""
                                    required="">
                             <label class="custom-control-label" for="monthly">Monthly Payments</label>
                         </div>
@@ -324,7 +492,8 @@
                         <div class="custom-control custom-radio">
                             <input id="payInFullLater" name="paymentMethod" type="radio" class="custom-control-input"
                                    required="">
-                            <label class="custom-control-label" for="payInFullLater">Pay Directly using check or Bank Transfer</label>
+                            <label class="custom-control-label" for="payInFullLater">Pay In Full Directly or
+                                Monthly</label>
                         </div>
                     </div>
 
@@ -335,12 +504,22 @@
             </div>
         </div>
     </div>
+    <div class="container-fluid">
+        <h2>Registration</h2>
+        <div class="row">
+            <div id='formio' class="col"></div>
+        </div>
+    </div>
 </div>
 
-<footer>
-    Link to Social media sites
-    link to pitchero
-    contact details for the club
+<footer class="nav-footer">
+    <a href="http://www.newarkrugby.com/" class="nav-footer-element" target="_blank" rel="nofollow">Newark RUFC</a>
+    |
+    <a href="https://twitter.com/newarkrufc" class="nav-footer-element" target="_blank" rel="nofollow">Twitter</a>
+    |
+    <a href="https://www.facebook.com/NewarkRugby" class="nav-footer-element" target="_blank"
+       rel="nofollow">Facebook</a>
+
 </footer>
 
 
