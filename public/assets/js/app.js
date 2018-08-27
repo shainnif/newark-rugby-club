@@ -1,3 +1,5 @@
+
+
 var uiConfig = {
   signInSuccessUrl: 'registration.html',
   signInFlow: 'popup',
@@ -11,9 +13,17 @@ var uiConfig = {
   // }
 };
 
-function addForm() {
+var ui = new firebaseui.auth.AuthUI(firebase.auth());
+if (ui.isPendingRedirect()) {
+  // Initialize the FirebaseUI Widget using Firebase.
+  // The start method will wait until the DOM is loaded.
+  ui.start('#firebaseui-auth-container', uiConfig);
+}
 
-  Formio.createForm(document.getElementById('formio'), {
+
+function addForm(div) {
+
+  Formio.createForm(div, {
     components: [
       {
         type: 'textfield',
@@ -120,19 +130,19 @@ function addForm() {
             format: 'yyyy-MM-dd',
             enableDate: true,
             enableTime: false,
-            defaultDate: '',
+            defaultDate: '2006-01-01',
             datepickerMode: 'day',
             datePicker: {
               showWeeks: true,
               startingDay: 0,
-              initDate: '',
+              initDate: '2006-01-01',
               minMode: 'day',
               maxMode: 'year',
               yearRows: 4,
               yearColumns: 5,
               datepickerMode: 'day',
               minDate: "2006-01-01",
-              maxDate: "2014-12-31"
+              maxDate: "2014-12-31",
             }
           },
           {
@@ -210,7 +220,6 @@ function addForm() {
     ]
   }).then(function (form) {
     form.on('submit', function (submission) {
-      form.readOnly();
 
       firebase.database().ref('/registrations/' + firebase.auth().currentUser.uid).set({
           parent_address: submission.data.homeAddress.formatted_address,
@@ -223,7 +232,9 @@ function addForm() {
           if (error) {
             console.log(error);
           } else {
+            window.location.replace("https://https://www.newarkminitour.com/registration.html")
             console.log("Written Successfully")
+
           }
         }
       );
@@ -238,14 +249,16 @@ document.addEventListener('DOMContentLoaded', function () {
 //
   firebase.auth().onAuthStateChanged(user => {
   if (user) {
-    if (! firebase.database().ref('/registrations/' + user.uid)) {
-      document.getElementById("registration").style.visibility = 'visible';
-      addForm();
-    } else {
-      document.getElementById("registered").style.visibility = 'visible';
-    }
+    firebase.database().ref('/registrations/'+ user.uid).once ('value', function (snapshot) {
+        if (snapshot.val() === null){
+          document.getElementById("registration").style.display = 'block';
+          console.log(document.getElementById("formio"));
+          addForm(document.getElementById("formio"));
+        } else
+          document.getElementById("registered").style.display = 'block';
+    } );
   } else {
-
+    document.getElementById("login").style.visibility = 'block';
   }
   });
 
@@ -258,10 +271,3 @@ document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('load').innerHTML = 'Error loading the Firebase SDK, check the console.';
   }
 });
-var ui = new firebaseui.auth.AuthUI(firebase.auth());
-if (ui.isPendingRedirect()) {
-  // Initialize the FirebaseUI Widget using Firebase.
-  ui.disableAutoSignIn();
-  // The start method will wait until the DOM is loaded.
-  ui.start('#firebaseui-auth-container', uiConfig);
-}

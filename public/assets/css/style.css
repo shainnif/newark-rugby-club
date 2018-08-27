@@ -478,14 +478,14 @@ hr {
     padding-top:30px;
     background:#fff;
     padding-bottom:40px;
-    visibility: hidden;
+    display: none;
 }
 
-#registrated {
+#registered {
     padding-top:30px;
     background:#fff;
     padding-bottom:40px;
-    visibility: hidden;
+    display: none;
 }
 
 #pricing .text-center p {
