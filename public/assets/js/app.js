@@ -3,6 +3,7 @@
 var uiConfig = {
   signInSuccessUrl: 'registration.html',
   signInFlow: 'popup',
+  credentialHelper: firebaseui.auth.CredentialHelper.NONE,
 
   signInOptions: [
     firebase.auth.EmailAuthProvider.PROVIDER_ID,
@@ -13,12 +14,6 @@ var uiConfig = {
   // }
 };
 
-var ui = new firebaseui.auth.AuthUI(firebase.auth());
-if (ui.isPendingRedirect()) {
-  // Initialize the FirebaseUI Widget using Firebase.
-  // The start method will wait until the DOM is loaded.
-  ui.start('#firebaseui-auth-container', uiConfig);
-}
 
 
 function addForm(div) {
@@ -232,7 +227,7 @@ function addForm(div) {
           if (error) {
             console.log(error);
           } else {
-            window.location.replace("https://https://www.newarkminitour.com/registration.html")
+            window.location.replace("https://www.newarkminitour.com/registration.html")
             console.log("Written Successfully")
 
           }
@@ -247,8 +242,10 @@ document.addEventListener('DOMContentLoaded', function () {
 // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
 // // The Firebase SDK is initialized and available here!
 //
+
   firebase.auth().onAuthStateChanged(user => {
   if (user) {
+    document.getElementById("login").style.display = 'none';
     firebase.database().ref('/registrations/'+ user.uid).once ('value', function (snapshot) {
         if (snapshot.val() === null){
           document.getElementById("registration").style.display = 'block';
@@ -259,6 +256,9 @@ document.addEventListener('DOMContentLoaded', function () {
     } );
   } else {
     document.getElementById("login").style.visibility = 'block';
+    var ui = new firebaseui.auth.AuthUI(firebase.auth());
+    ui.start('#firebaseui-auth-container', uiConfig);
+
   }
   });
 
