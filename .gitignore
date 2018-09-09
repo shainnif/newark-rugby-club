@@ -61,7 +61,7 @@ typings/
 
 # next.js build output
 .next
-
+.firebase/
 
 /public/node_modules/
 /functions/node_modules/
