@@ -17,8 +17,8 @@ var uiConfig = {
 
 
 function addForm(div) {
-
-  Formio.createForm(div, {
+try {
+  Formio.createForm(document.getElementById("formio"), {
     components: [
       {
         type: 'textfield',
@@ -66,7 +66,6 @@ function addForm(div) {
         values: [{label: 'Yes', value: 'Y'}, {label: 'No', value: 'N'}, {label: 'Potentially', value: '?'}],
         input: true
       },
-
       {
         type: 'radio',
         key: 'sponsorship',
@@ -119,27 +118,34 @@ function addForm(div) {
           {
             label: 'Birthdate',
             key: 'birthdate',
-            type: 'datetime',
+            type: 'textfield',
             input: true,
-            placeholder: '',
-            format: 'yyyy-MM-dd',
-            enableDate: true,
-            enableTime: false,
-            defaultDate: '2006-01-01',
-            datepickerMode: 'day',
-            datePicker: {
-              showWeeks: true,
-              startingDay: 0,
-              initDate: '2006-01-01',
-              minMode: 'day',
-              maxMode: 'year',
-              yearRows: 4,
-              yearColumns: 5,
-              datepickerMode: 'day',
-              minDate: "2006-01-01",
-              maxDate: "2014-12-31",
-            }
+            placeholder: 'DDMMYYYY'
           },
+          // {
+          //   label: 'Birthdate',
+          //   key: 'birthdate',
+          //   type: 'datetime',
+            // input: true,
+            // placeholder: '',
+            // format: 'yyyy-MM-dd',
+            // enableDate: true,
+            // enableTime: false,
+            // defaultDate: '2006-01-01',
+            // datepickerMode: 'day',
+            // datePicker: {
+            //   showWeeks: true,
+            //   startingDay: 0,
+            //   initDate: '2006-01-01',
+            //   minMode: 'day',
+            //   maxMode: 'year',
+            //   yearRows: 4,
+            //   yearColumns: 5,
+            //   datepickerMode: 'day',
+            //   minDate: "2006-01-01",
+            //   maxDate: "2014-12-31",
+            // }
+          // },
           {
             label: 'Age Group 2018/2019 Season',
             key: 'ageGroup',
@@ -209,11 +215,17 @@ function addForm(div) {
       {
         type: 'button',
         action: 'submit',
-        label: 'Continue to Checkout',
+        label: 'Complete Registration',
         theme: 'primary'
       }
     ]
   }).then(function (form) {
+    form.showErrors();
+
+    form.on('error', (errors)=> {
+      console.log('we have errors ', errors);
+    });
+
     form.on('submit', function (submission) {
 
       firebase.database().ref('/registrations/' + firebase.auth().currentUser.uid).set({
@@ -235,8 +247,10 @@ function addForm(div) {
       );
     })
   })
+} catch (e){
+  console.log(e);
+}
 };
-
 
 document.addEventListener('DOMContentLoaded', function () {
 // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
@@ -249,7 +263,6 @@ document.addEventListener('DOMContentLoaded', function () {
     firebase.database().ref('/registrations/'+ user.uid).once ('value', function (snapshot) {
         if (snapshot.val() === null){
           document.getElementById("registration").style.display = 'block';
-          console.log(document.getElementById("formio"));
           addForm(document.getElementById("formio"));
         } else
           document.getElementById("registered").style.display = 'block';
